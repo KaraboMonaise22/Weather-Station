@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <Link rel="stylesheet" href="Style.css">
+    <title>Weather</title>
+</head>
+<body>
+    <div class="app">
+ 
+  <div class="app-header">
+    <h1 class="app-title">Weather<span>·</span>Station</h1>
+    <div class="app-sub">Search any city for its current conditions.</div>
+  </div>
+ 
+  <form class="search-row" id="searchForm">
+    <input type="text" id="cityInput" placeholder="Search a city — e.g. Nairobi, Osaka, Lisbon" autocomplete="off" />
+    <button class="locate-btn" type="button" id="locateBtn" title="Use my location" aria-label="Use my current location">📍</button>
+    <button class="primary" type="submit" id="searchBtn">
+      <span class="spinner"></span>
+      <span class="btn-label">Check weather</span>
+    </button>
+  </form>
+ 
+  <div class="status" id="statusLine" role="status" aria-live="polite"></div>
+ 
+  <div class="empty-state" id="emptyState">
+    <div class="icon">🌦️</div>
+    Search for a city above to see its current weather.
+  </div>
+ 
+  <section class="reading" id="reading">
+    <div class="reading-head">
+      <div>
+        <div class="place"><span id="placeName">—</span><span class="country" id="placeCountry"></span></div>
+        <div class="updated" id="updatedAt"></div>
+      </div>
+      <div class="units-toggle" id="unitsToggle">
+        <button type="button" data-unit="C" class="active">°C</button>
+        <button type="button" data-unit="F">°F</button>
+      </div>
+    </div>
+ 
+    <div class="reading-body">
+      <div class="dial-col">
+        <svg width="180" height="140" viewBox="0 0 180 140">
+          <path d="M 20 120 A 70 70 0 1 1 160 120" fill="none" stroke="#2b394c" stroke-width="10" stroke-linecap="round"/>
+          <path id="tempArcFill" d="M 20 120 A 70 70 0 1 1 160 120" fill="none" stroke="url(#dialGrad)" stroke-width="10" stroke-linecap="round"
+                stroke-dasharray="330" stroke-dashoffset="330"/>
+          <defs>
+            <linearGradient id="dialGrad" x1="0%" y1="0%" x2="100%" y2="0%">
+              <stop offset="0%" stop-color="#5b8c89"/>
+              <stop offset="100%" stop-color="#c9932b"/>
+            </linearGradient>
+          </defs>
+          <g id="tempNeedle" transform-origin="90 120">
+            <line x1="90" y1="120" x2="90" y2="58" stroke="#ece7dc" stroke-width="2"/>
+            <circle cx="90" cy="120" r="5" fill="#ece7dc"/>
+          </g>
+          <text x="90" y="105" text-anchor="middle" font-family="Space Grotesk, sans-serif" font-size="30" font-weight="600" fill="#ece7dc" id="tempText">—</text>
+        </svg>
+        <img class="weather-icon" id="weatherIcon" src="" alt="" />
+        <div class="dial-condition" id="condition">—</div>
+        <div class="dial-feels" id="feelsLike"></div>
+      </div>
+ 
+      <div class="data-col">
+        <div class="data-row"><span class="data-label">Humidity</span><span class="data-value" id="humidity">—</span></div>
+        <div class="data-row"><span class="data-label">Wind</span><span class="data-value" id="wind">—</span></div>
+        <div class="data-row"><span class="data-label">Pressure</span><span class="data-value" id="pressure">—</span></div>
+        <div class="data-row"><span class="data-label">Visibility</span><span class="data-value" id="visibility">—</span></div>
+        <div class="data-row"><span class="data-label">Sunrise</span><span class="data-value accent" id="sunrise">—</span></div>
+        <div class="data-row"><span class="data-label">Sunset</span><span class="data-value accent" id="sunset">—</span></div>
+      </div>
+    </div>
+  </section>
+ 
+  <div class="footnote">Data from OpenWeatherMap.</div>
+</div>
+
+<script src="Script.js"></script>
+</body>
+</html>
